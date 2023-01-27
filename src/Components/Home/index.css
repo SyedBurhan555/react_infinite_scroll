@@ -1,0 +1,10 @@
+h1{
+    text-align: center;
+}
+.home{
+    width: 60%;
+    margin: auto;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: auto auto auto;
+}
