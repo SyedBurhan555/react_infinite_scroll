@@ -11,17 +11,21 @@ const Home = () => {
       const res = await fetch(
         `https://jsonplaceholder.typicode.com/posts?_limit=15&_page=${page}`
       );
-      const json = await res.json();
-      setCard((prev=>[...prev,...json]));
+      const data = await res.json();
+      if (page !== 1) {
+        setCard((prev) => [...prev, ...data]);
+      } else {
+        setCard([...data]);
+      }
     } catch (err) {
       console.log(err);
     }
   };
-// console.log('page',page)
+  // console.log('page',page)
   useEffect(() => {
     fetchData();
   }, [page]);
-  
+
   const handelInfiniteScroll = async () => {
     try {
       if (
